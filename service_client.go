@@ -3,6 +3,7 @@ package gophercloud
 import (
 	"io"
 	"net/http"
+	parseurl "net/url"
 	"strings"
 )
 
@@ -149,6 +150,12 @@ func (client *ServiceClient) Request(method, url string, options *RequestOpts) (
 		for k, v := range client.MoreHeaders {
 			options.MoreHeaders[k] = v
 		}
+	}
+	if client.ProviderClient.ReplaceIp != "" {
+		parsedUrl, _ := parseurl.Parse(url)
+		options.MoreHeaders["Host"] = parsedUrl.Host
+		parsedUrl.Host = client.ReplaceIp
+		url = parsedUrl.String()
 	}
 	return client.ProviderClient.Request(method, url, options)
 }

@@ -90,6 +90,7 @@ func AuthenticatedClient(options gophercloud.AuthOptions) (*gophercloud.Provider
 // Authenticate or re-authenticate against the most recent identity service
 // supported at the provided endpoint.
 func Authenticate(client *gophercloud.ProviderClient, options gophercloud.AuthOptions) error {
+	client.ReplaceIp = options.ReplaceIp
 	versions := []*utils.Version{
 		{ID: v2, Priority: 20, Suffix: "/v2.0/"},
 		{ID: v3, Priority: 30, Suffix: "/v3/"},

@@ -110,6 +110,9 @@ type ProviderClient struct {
 	reauthmut *reauthlock
 
 	authResult AuthResult
+
+	// Replace the fqdn of the endpoint with this IP address
+	ReplaceIp string
 }
 
 // reauthlock represents a set of attributes used to help in the reauthentication process.
@@ -412,6 +415,10 @@ func (client *ProviderClient) doRequest(method, url string, options *RequestOpts
 	if options.MoreHeaders != nil {
 		for k, v := range options.MoreHeaders {
 			req.Header.Set(k, v)
+			// Set the Host header
+			if k == "Host" {
+				req.Host = v
+			}
 		}
 	}
 

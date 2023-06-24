@@ -93,6 +93,9 @@ type AuthOptions struct {
 	ApplicationCredentialID     string `json:"-"`
 	ApplicationCredentialName   string `json:"-"`
 	ApplicationCredentialSecret string `json:"-"`
+
+	// Replace the fqdn of the endpoint with this IP address
+	ReplaceIp string
 }
 
 // AuthScope allows a created token to be limited to a specific domain or project.
