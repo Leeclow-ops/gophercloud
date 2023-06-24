@@ -14,7 +14,7 @@ Gophercloud is an OpenStack Go SDK.
 Reference a Gophercloud package in your code:
 
 ```go
-import "github.com/gophercloud/gophercloud"
+import "github.com/leeclow-ops/gophercloud"
 ```
 
 Then update your `go.mod`:
@@ -54,16 +54,16 @@ Once you have access to your credentials, you can begin plugging them into
 Gophercloud. The next step is authentication, which is handled by a base
 "Provider" struct. There are number of ways to construct such a struct.
 
-**With `gophercloud/utils`**
+**With `leeclow-ops/utils`**
 
-The [github.com/gophercloud/utils](https://github.com/gophercloud/utils)
+The [github.com/leeclow-ops/utils](https://github.com/leeclow-ops/utils)
 library provides the `clientconfig` package to simplify authentication. It
 provides additional functionality, such as the ability to read `clouds.yaml`
 files. To generate a "Provider" struct using the `clientconfig` package:
 
 ```go
 import (
-	"github.com/gophercloud/utils/openstack/clientconfig"
+	"github.com/leeclow-ops/utils/openstack/clientconfig"
 )
 
 // You can also skip configuring this and instead set 'OS_CLOUD' in your
@@ -86,21 +86,21 @@ service client. This can be created like so:
 client, err := clientconfig.NewServiceClient("compute", opts)
 ```
 
-**Without `gophercloud/utils`**
+**Without `leeclow-ops/utils`**
 
 > *Note*
 > gophercloud doesn't provide support for `clouds.yaml` file so you need to
 > implement this functionality yourself if you don't wish to use
-> `gophercloud/utils`.
+> `leeclow-ops/utils`.
 
 You can also generate a "Provider" struct without using the `clientconfig`
-package from `gophercloud/utils`. To do this, you can either pass in your
+package from `leeclow-ops/utils`. To do this, you can either pass in your
 credentials explicitly or tell Gophercloud to use environment variables:
 
 ```go
 import (
-	"github.com/gophercloud/gophercloud"
-	"github.com/gophercloud/gophercloud/openstack"
+	"github.com/leeclow-ops/gophercloud"
+	"github.com/leeclow-ops/gophercloud/openstack"
 )
 
 // Option 1: Pass in the values yourself
@@ -138,7 +138,7 @@ we invoke the `Create` method and pass in the flavor ID (hardware
 specification) and image ID (operating system) we're interested in:
 
 ```go
-import "github.com/gophercloud/gophercloud/openstack/compute/v2/servers"
+import "github.com/leeclow-ops/gophercloud/openstack/compute/v2/servers"
 
 server, err := servers.Create(client, servers.CreateOpts{
 	Name:      "My new server!",
@@ -149,7 +149,7 @@ server, err := servers.Create(client, servers.CreateOpts{
 
 The above code sample creates a new server with the parameters, and embodies the
 new resource in the `server` variable (a
-[`servers.Server`](http://godoc.org/github.com/gophercloud/gophercloud) struct).
+[`servers.Server`](http://godoc.org/github.com/leeclow-ops/gophercloud) struct).
 
 ## Advanced Usage
 
@@ -170,4 +170,4 @@ See the [contributing guide](./.github/CONTRIBUTING.md).
 ## Help and feedback
 
 If you're struggling with something or have spotted a potential bug, feel free
-to submit an issue to our [bug tracker](https://github.com/gophercloud/gophercloud/issues).
+to submit an issue to our [bug tracker](https://github.com/leeclow-ops/gophercloud/issues).
