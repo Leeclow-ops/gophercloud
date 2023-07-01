@@ -59,8 +59,9 @@ type Domain struct {
 // User represents a user resource that exists in the Identity Service.
 type User struct {
 	Domain Domain `json:"domain"`
-	ID     string `json:"id"`
-	Name   string `json:"name"`
+	ID	string `json:"id"`
+	Name	string `json:"name"`
+	Email	string `json:"email"`
 }
 
 // Role provides information about roles to which User is authorized.
