@@ -1,13 +1,13 @@
-name: Ensure labels
+name: Apply labels in .github/labels.yaml
 on:
   push:
     branches:
       - master
     paths:
-      - .github/semver-labels.yaml
-      - .github/workflows/semver-labels.yaml
+      - .github/labels.yaml
+      - .github/workflows/ensure-labels.yaml
 jobs:
-  semver:
+  ensure:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -15,4 +15,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          manifest: .github/semver-labels.yaml
+          manifest: .github/labels.yaml
