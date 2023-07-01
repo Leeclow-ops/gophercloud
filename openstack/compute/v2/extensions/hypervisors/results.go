@@ -138,6 +138,12 @@ type Hypervisor struct {
 
 	// VCPUsUsed is the number of used vcpus on the hypervisor.
 	VCPUsUsed int `json:"vcpus_used"`
+
+	// CpuAllocationRatio represents the CPU allocation ratio parameter on the hypervisor.
+	CpuAllocationRatio	float32		`json:"cpu_allocation_ratio"`
+
+	// RamAllocationRatio represents the MEM allocation ratio parameter on the hypervisor.
+	RamAllocationRatio	float32		`json:"ram_allocation_ratio"`
 }
 
 func (r *Hypervisor) UnmarshalJSON(b []byte) error {
